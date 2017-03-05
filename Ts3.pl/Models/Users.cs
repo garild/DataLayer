@@ -22,6 +22,7 @@ namespace Ts3.pl.Models
         public string Email { get; set; }
         [Required(ErrorMessage = "Podaj podaj 8 cyfrowe hasło!")]
         [MinLength(8)]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         public bool? IsSuperUser { get; set; }
         public DateTime? ModyficationDate { get; set; }

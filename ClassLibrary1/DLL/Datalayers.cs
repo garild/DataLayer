@@ -9,7 +9,7 @@ namespace BLL.DLL
 {
     public class Datalayers
     {
-        public DataResult<TResult> QueryMultiData<TResult>(string connectionString, string procedureName, object param = null) where TResult : class, new()
+        public DataResult<TResult> QueryMultiData<TResult>(string connectionString, string procedureName, object param = null) where TResult :  new()
         {
             using (var conn = new SqlConnection(connectionString))
             {
@@ -25,12 +25,12 @@ namespace BLL.DLL
                 return SqlMapper.Query<TResult>(conn, procedureName, param, commandType: CommandType.StoredProcedure).FirstOrDefault<TResult>();
         }
 
-        public DMLResult<TResult> DMLData<TResult>(string connectionString, string procedureName, object param = null) where TResult : class, new()
+        public DMLResult<DMLResultType> DMLData<DMLResultType>(string connectionString, string procedureName, object param = null) where DMLResultType : class, new()
         {
             using (var conn = new SqlConnection(connectionString))
             {
-                var data = SqlMapper.Query<TResult>(conn, procedureName, param, commandType: CommandType.StoredProcedure).FirstOrDefault<TResult>();
-                return new DMLResult<TResult>() { Value = data };
+                var data = SqlMapper.Query<DMLResultType>(conn, procedureName, param, commandType: CommandType.StoredProcedure).FirstOrDefault<DMLResultType>();
+                return new DMLResult<DMLResultType>() { Value = data };
             }
         }
 
@@ -84,7 +84,7 @@ namespace BLL.DLL
                     if (value == null)
                     {
                         _success = false;
-                        _valueList = new List<T>();
+                        _value = default(T);
                         return;
                     }
                     _success = true;
@@ -145,11 +145,18 @@ namespace BLL.DLL
             List<T> valueList { get; set; }
         }
 
-        public interface IDmlResult<T>
+        public interface IDmlResult<DMLResultType>
         {
             bool Succeed { get; }
             bool Error { get; }
-            T Value { get; set; }
+            DMLResultType Value { get; set; }
+        }
+
+        public class DMLResultType
+        {
+            public bool Succeed { get; set; }
+            public bool Error { get; set; }
+            public int Id { get; set; }
         }
     }
 }

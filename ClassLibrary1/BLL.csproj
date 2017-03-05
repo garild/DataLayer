@@ -38,6 +38,13 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc.Extensions, Version=1.1.0.6, Culture=neutral, PublicKeyToken=d631f4e4b226a032, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Web.Mvc.Extensions.1.1.1.2\lib\net45\System.Web.Mvc.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,10 +57,21 @@
     <Compile Include="Cache\ICache.cs" />
     <Compile Include="DLL\Datalayers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebCache\Cache.cs" />
+    <Compile Include="WebCommon\Authorization\AccountVM.cs" />
+    <Compile Include="WebCommon\Authorization\SessionPresister.cs" />
+    <Compile Include="WebCommon\Authorization\Ts3Authorize.cs" />
+    <Compile Include="WebCommon\Authorization\Ts3Principal.cs" />
+    <Compile Include="WebCommon\Authorization\BaseUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
