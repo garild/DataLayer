@@ -243,3 +243,5 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/Ts3.pl/roslyn
+/Ts3.pl/Properties/PublishProfiles

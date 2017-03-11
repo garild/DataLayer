@@ -14,8 +14,6 @@ namespace Ts3.pl.Controllers
             return View();
         }
 
-        [Ts3Authorize]
-        [HttpPost]
         public ActionResult Registry(Users user)
         {
             if (ModelState.IsValid)

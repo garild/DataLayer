@@ -14,13 +14,13 @@ namespace DataLayer.WebCommon.Authorization
 
         public BaseUser FindUser(string UserName, string Password)
         {
-            User = QueryData<BaseUser>(BaseConnection, "GetUser", new { UserName = UserName, Password = Password });
+            User = QueryData<BaseUser>("GetUser", new { UserName = UserName, Password = Password });
             return User;
         }
 
         public List<string> GetUserRoles(int id)
         {
-            User.Roles = QueryMultiData<List<string>>(BaseConnection, "GetUserRoles", new { UserId = id }) as List<string>;
+            User.Roles = QueryMultiData<List<string>>("GetUserRoles", new { UserId = id }) as List<string>;
             return User.Roles;
         }
     }

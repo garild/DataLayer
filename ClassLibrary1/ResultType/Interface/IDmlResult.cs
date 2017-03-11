@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataLayer.ResultType.Implementation
+namespace DataLayer.ResultType.Interface
 {
     public interface IDmlResult<DMLResultType>
     {

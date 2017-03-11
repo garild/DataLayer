@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[AddNewUser]
+﻿CREATE PROCEDURE [dbo].[Ts3pl_User_AddNewUser]
 	 @DisplayName VARCHAR(250) = '',
                 @Name VARCHAR(250) = '',
                 @Vorname VARCHAR(250) = '',
@@ -10,4 +10,4 @@ AS
 		 INSERT INTO dbo.Users (DisplayName,Name,Vorname,Password,Email,IsSuperUser,Deleted,CreateDate,ModyficationDate) 
 		 VALUES (@DisplayName,@Name,@Vorname,@Password,@Email,0,0,GETDATE(),NULL)
 		END
-RETURN 0
+

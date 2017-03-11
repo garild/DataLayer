@@ -1,9 +1,5 @@
-﻿using DataLayer.ResultType.Implementation;
-using System;
+﻿using DataLayer.ResultType.Interface;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataLayer.ResultType.Repository
 {

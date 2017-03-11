@@ -1,11 +1,6 @@
-﻿using DataLayer.ResultType.Implementation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DataLayer.ResultType.Interface;
 
-namespace DataLayer.ResultType.Repository
+namespace DataLayer.ResultType.Implementation
 {
     public sealed class DMLResult<T> : IDmlResult<T>
     {
