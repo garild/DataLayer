@@ -1,13 +1,11 @@
-﻿using BLL.DLL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BLL.DLL;
 using System.Configuration;
 
-namespace ClassLibrary1.WebCommon.Authorization
+namespace DataLayer.WebCommon.Authorization
 {
     public class AccountVM : Datalayers
     {

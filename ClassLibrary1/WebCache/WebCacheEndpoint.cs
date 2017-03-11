@@ -2,15 +2,15 @@
 using System.Collections.Concurrent;
 using System.Web.Caching;
 
-namespace BLL
+namespace DataLayer
 {
-    public class CacheEndpoint : ICache
+    public class WebCacheEndpoint : IWebCache
     {
         private static readonly ConcurrentDictionary<string, object> Locks = new ConcurrentDictionary<string, object>();
         private static Cache _cache;
         protected static Cache Cache => _cache ?? new Cache();
-        public static CacheEndpoint CacheInstance() => new CacheEndpoint();
-        public CacheEndpoint()
+        public static WebCacheEndpoint CacheInstance() => new WebCacheEndpoint();
+        public WebCacheEndpoint()
         {
 
         }

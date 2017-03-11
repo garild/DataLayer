@@ -1,4 +1,5 @@
-﻿using BLL.DLL;
+﻿using DataLayer;
+using DataLayer.ResultType.Repository;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

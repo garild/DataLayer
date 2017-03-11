@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace ClassLibrary1.WebCommon.Authorization
+namespace DataLayer.WebCommon.Authorization
 {
     public class Ts3Authorize : AuthorizeAttribute
     {
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-            if (string.IsNullOrEmpty(SessionPresister.UserName) && string.IsNullOrEmpty(SessionPresister.UserName))
+            if (string.IsNullOrEmpty(SessionPresister.UserName) && string.IsNullOrEmpty(SessionPresister.Password))
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Registry", action = "Index" }));
             else
             {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace ClassLibrary1.WebCommon.Authorization
+namespace DataLayer.WebCommon.Authorization
 {
     public static class SessionPresister
     {

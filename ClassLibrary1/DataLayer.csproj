@@ -7,8 +7,8 @@
     <ProjectGuid>{80D17C4A-E6F4-4732-B63E-2D794C1FB4CE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ClassLibrary1</RootNamespace>
-    <AssemblyName>ClassLibrary1</AssemblyName>
+    <RootNamespace>DataLayer</RootNamespace>
+    <AssemblyName>DataLayer</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -53,15 +53,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cache\CacheEndpoint.cs" />
-    <Compile Include="Cache\ICache.cs" />
-    <Compile Include="DLL\Datalayers.cs" />
+    <Compile Include="ResultType\Type\DMLResultType.cs" />
+    <Compile Include="WebCache\WebCacheEndpoint.cs" />
+    <Compile Include="WebCache\IWebCache.cs" />
+    <Compile Include="Datalayers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultType\Implementation\IDataResult.cs" />
+    <Compile Include="ResultType\Implementation\IDmlResult.cs" />
+    <Compile Include="ResultType\Repository\QueryResult.cs" />
+    <Compile Include="ResultType\Repository\DMLResult.cs" />
     <Compile Include="WebCommon\Authorization\AccountVM.cs" />
     <Compile Include="WebCommon\Authorization\SessionPresister.cs" />
     <Compile Include="WebCommon\Authorization\Ts3Authorize.cs" />
     <Compile Include="WebCommon\Authorization\Ts3Principal.cs" />
-    <Compile Include="WebCommon\Authorization\BaseUser.cs" />
+    <Compile Include="WebCommon\Model\BaseUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

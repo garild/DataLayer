@@ -5,7 +5,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary1.WebCommon.Authorization
+namespace DataLayer.WebCommon.Authorization
 {
     public class Ts3Principal : IPrincipal
     {

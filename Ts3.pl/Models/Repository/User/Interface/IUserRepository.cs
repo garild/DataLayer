@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using static BLL.DLL.Datalayers;
+﻿using DataLayer.ResultType.Repository;
+using System.Collections.Generic;
 
 namespace Ts3.pl.Models.Repository.User.Interface
 {

@@ -281,9 +281,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\BLL.csproj">
+    <ProjectReference Include="..\ClassLibrary1\DataLayer.csproj">
       <Project>{80d17c4a-e6f4-4732-b63e-2d794c1fb4ce}</Project>
-      <Name>BLL</Name>
+      <Name>DataLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
