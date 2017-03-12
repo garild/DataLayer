@@ -10,6 +10,7 @@ namespace DataLayer.WebCommon.Authorization
     public class AccountVM : Datalayers
     {
         private readonly string BaseConnection = ConfigurationManager.ConnectionStrings["BaseConnection"].ConnectionString;
+
         public BaseUser User { get; set; }
 
         public BaseUser FindUser(string UserName, string Password)

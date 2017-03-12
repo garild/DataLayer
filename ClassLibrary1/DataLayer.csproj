@@ -54,8 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ResultType\Type\DMLResultType.cs" />
-    <Compile Include="WebCache\WebCacheEndpoint.cs" />
-    <Compile Include="WebCache\IWebCache.cs" />
+    <Compile Include="WebCache\Implementation\WebCacheEndpoint.cs" />
+    <Compile Include="WebCache\Interface\IWebCache.cs" />
     <Compile Include="Datalayers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultType\Interface\IDataResult.cs" />

@@ -1,6 +1,8 @@
 ﻿using Dapper;
 using DataLayer.ResultType.Implementation;
+using DataLayer.ResultType.Interface;
 using DataLayer.ResultType.Repository;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -12,8 +14,28 @@ namespace DataLayer
 
     {
         private readonly string BaseConnection = ConfigurationManager.ConnectionStrings["BaseConnection"].ConnectionString;
+        private static object syncLock = new Object();
+        private static SqlConnection _connetion = null;
 
-        public IDataResult<TResult> QueryMultiData<TResult>(string procedureName, object param = null) where TResult :  new()
+        public Datalayers()
+        {
+            lock (syncLock)
+            {
+                if (_connetion != null)
+                {
+                    if (_connetion.State == ConnectionState.Closed)
+                        _connetion.Open();
+                }
+                else
+                {
+                    _connetion = new SqlConnection(BaseConnection);
+                    _connetion.Open();
+                }
+            }
+        }
+
+
+        public IDataResult<TResult> QueryMultiData<TResult>(string procedureName, object param = null) where TResult : new()
         {
             using (var conn = new SqlConnection(BaseConnection))
             {
@@ -37,6 +59,6 @@ namespace DataLayer
             }
         }
 
-       
+
     }
 }

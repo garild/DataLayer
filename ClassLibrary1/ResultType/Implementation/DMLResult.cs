@@ -40,6 +40,7 @@ namespace DataLayer.ResultType.Implementation
                 {
                     _error = true;
                     _value = default(T);
+                    return;
                 }
                 _success = true;
                 _value = value;

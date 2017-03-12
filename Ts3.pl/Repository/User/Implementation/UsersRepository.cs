@@ -1,10 +1,9 @@
 ﻿using DataLayer;
-using DataLayer.ResultType.Repository;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using Ts3.pl.Models.Repository.User.Interface;
 using DataLayer.WebCommon.Security;
+using DataLayer.ResultType.Implementation;
 
 namespace Ts3.pl.Models.Repository.User.Implementation
 {

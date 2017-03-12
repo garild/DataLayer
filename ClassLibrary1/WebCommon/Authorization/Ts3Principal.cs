@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataLayer.WebCommon.Authorization
 {
@@ -19,6 +15,7 @@ namespace DataLayer.WebCommon.Authorization
             this._user  = user;
             Identity = new GenericIdentity(_user.Name);
         }
+
         public IIdentity Identity
         {
             get; set;
@@ -27,7 +24,8 @@ namespace DataLayer.WebCommon.Authorization
         public bool IsInRole(string role)
         {
             var data = _accountVm.FindUser(_userName, _password);
-            if (data.Id > 0)
+
+            if (data?.Id > 0)
             {
                 data.Roles = _accountVm.GetUserRoles(data.Id);
                 return role.Any(p => data.Roles.Contains(role.ToLower()));

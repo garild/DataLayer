@@ -38,7 +38,6 @@ namespace DataLayer.ResultType.Repository
                 }
                 _success = true;
                 _valueList = value;
-
             }
         }
         public T value
@@ -47,7 +46,6 @@ namespace DataLayer.ResultType.Repository
             {
                 return _value;
             }
-
             set
             {
                 if (value == null)

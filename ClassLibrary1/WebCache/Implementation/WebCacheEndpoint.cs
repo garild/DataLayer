@@ -10,6 +10,7 @@ namespace DataLayer
         private static Cache _cache;
         protected static Cache Cache => _cache ?? new Cache();
         public static WebCacheEndpoint CacheInstance() => new WebCacheEndpoint();
+
         public WebCacheEndpoint()
         {
 
@@ -24,6 +25,7 @@ namespace DataLayer
                         null
                             );
         }
+
         public TResultType GetCache<TResultType>(string key)
         {
             return (TResultType)Cache.Get(key);
@@ -50,7 +52,5 @@ namespace DataLayer
             }
             return (TResultType)resultData;
         }
-
-
     }
 }

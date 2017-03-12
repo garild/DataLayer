@@ -1,4 +1,5 @@
-﻿using DataLayer.ResultType.Repository;
+﻿using DataLayer.ResultType.Implementation;
+using DataLayer.ResultType.Repository;
 using System.Collections.Generic;
 
 namespace Ts3.pl.Models.Repository.User.Interface
