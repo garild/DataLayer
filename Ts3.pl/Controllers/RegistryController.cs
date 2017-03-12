@@ -23,12 +23,11 @@ namespace Ts3.pl.Controllers
                 {
                     ModelState.Clear();
                     ViewBag.SuccessMsg = "Konto zostało utworzone!";
-                    return View();
                 }
-                   
             }
-            ViewBag.ErrorMsg = "Wystąpił błąd podczas utworzenia konta. Podany login bądź email już istnieje!";
-            return View();
+            else
+                ViewBag.ErrorMsg = "Wystąpił błąd podczas utworzenia konta. Podany login bądź email już istnieje!";
+            return View("Index");
         }
     }
 }
