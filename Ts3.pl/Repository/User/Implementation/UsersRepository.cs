@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Ts3.pl.Models.Repository.User.Interface;
 using DataLayer.WebCommon.Security;
 using DataLayer.ResultType.Implementation;
+using DataLayer.ResultType.Type;
+using DataLayer.ResultType.Interface;
 
 namespace Ts3.pl.Models.Repository.User.Implementation
 {
@@ -11,9 +13,9 @@ namespace Ts3.pl.Models.Repository.User.Implementation
     {
        
 
-        public DMLResult<Users> AddNewUser(Users user)
+        public IDmlResult<DMLResultType> AddNewUser(Users user)
         {
-            return DMLData<Users>("Ts3pl_User_AddNewUser", new
+            return DMLData<DMLResultType>("Ts3pl_User_AddNewUser", new
             {
                 DisplayName = user.DisplayName,
                 Name = user.Name,
