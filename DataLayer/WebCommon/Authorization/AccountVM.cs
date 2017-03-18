@@ -13,9 +13,9 @@ namespace DataLayer.WebCommon.Authorization
 
         public BaseUser User { get; set; }
 
-        public BaseUser FindUser(string UserName, string Password)
+        public BaseUser FindUser(string UserName)
         {
-            User = QueryData<BaseUser>("GetUser", new { UserName = UserName, Password = Password });
+            User = QueryData<BaseUser>("Ts3pl_User_FindUser", new { Login = UserName});
             return User;
         }
 

@@ -61,7 +61,8 @@ body {
 /* Global Structure ============================================================= */
 .main {
 	margin:0 auto;
-	width:940px
+	width:940px;
+   
 }
 /* ============================= main layout ====================== */
 a {
@@ -176,7 +177,7 @@ header {
 }
 #logo {
 	display:block;
-	background:url(/Content/images/logo.png) 30px -28px no-repeat;
+	background:url(/Content/images/logo.png) 30px -15px no-repeat;
 	width: 288px;
 	height:110px;
 	text-indent:-9999px;

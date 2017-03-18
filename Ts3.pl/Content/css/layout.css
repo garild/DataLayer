@@ -14,11 +14,17 @@
 	width:220px;
 }
 /*======= index.html =======*/
+.login,
+.logout { 
+    position: absolute; 
+    top: -3px;
+    right: 0;
+}
 #page1 .body2 {
 	background:url(/Content/images/bg_slider.gif) bottom repeat-x
 }
 #page1 header {
-	height:551px;
+	height:800px;
 }
 /*======= index-1.html =======*/
 /*======= index-2.html =======*/

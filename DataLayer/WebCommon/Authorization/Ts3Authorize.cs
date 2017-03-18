@@ -17,7 +17,7 @@ namespace DataLayer.WebCommon.Authorization
             else
             {
                 AccountVM _acctontVm = new AccountVM();
-                Ts3Principal t3Princ = new Ts3Principal(_acctontVm.FindUser(SessionPresister.UserName, SessionPresister.Password));
+                Ts3Principal t3Princ = new Ts3Principal(_acctontVm.FindUser(SessionPresister.UserName));
                 if (!t3Princ.IsInRole(Roles))
                     filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "AccessDenny", action = "Index" }));
             }

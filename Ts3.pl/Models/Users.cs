@@ -20,8 +20,9 @@ namespace Ts3.pl.Models
         [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Podaj poprawny adres e-mail : xx@yy.com")]
         [Display(Name = "E-mail")]
         public string Email { get; set; }
-        [Required(ErrorMessage = "Podaj podaj 8 cyfrowe hasło!")]
+        [Required(ErrorMessage = "Podaj 8 cyfrowe hasło!")]
         [MinLength(8)]
+        [Display(Name = "Hasło")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
         public bool? IsSuperUser { get; set; }

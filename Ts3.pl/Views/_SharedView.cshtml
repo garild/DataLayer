@@ -1,7 +1,5 @@
-﻿
-
-<!DOCTYPE html>
-
+﻿<!DOCTYPE html>
+@using DataLayer.WebCommon.Authorization;
 <html class="cufon-active cufon-ready">
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -25,7 +23,8 @@
                     <div class="wrapper">
                         <h1><a href="@Url.Action("Index","Home")" id="logo">Darmowy Serwer DNS</a></h1>
                         <nav>
-                            @HttpContext.Current.User.Identity.Name
+                            Jesteś zalogowany:<input type="text" class="logout" value="@SessionPresister.UserName" disabled="disabled"/>
+                            
                             <ul id="menu">
                                 <li id="nav1" class="active"><a href="@Url.Action("Index","Home")">Home<span>Witaj!</span></a></li>
                                 <li id="nav3"><a href="services.html">Serwery<span>Dodaj!</span></a></li>
@@ -36,9 +35,9 @@
                         </nav>
                     </div>
                     <div class="row">
-                        
-                            @RenderBody()
-                       
+
+                        @RenderBody()
+
                     </div>
                 </header>
                 <!-- header end-->
@@ -79,5 +78,5 @@
     </div>
 </body>
 @Scripts.Render("~/bundles/bootstrap")
-@Styles.Render("~/Content/bootstrap");
+@Styles.Render("~/Content/bootstrap")
 </html>

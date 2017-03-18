@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ts3.pl", "Ts3.pl\Ts3.pl.csproj", "{B63DB3BF-BED4-451C-8F66-7B5023067996}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "ClassLibrary1\DataLayer.csproj", "{80D17C4A-E6F4-4732-B63E-2D794C1FB4CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\DataLayer.csproj", "{80D17C4A-E6F4-4732-B63E-2D794C1FB4CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

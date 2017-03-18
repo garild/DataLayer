@@ -23,7 +23,7 @@ namespace DataLayer.WebCommon.Authorization
 
         public bool IsInRole(string role)
         {
-            var data = _accountVm.FindUser(_userName, _password);
+            var data = _accountVm.FindUser(_userName);
 
             if (data?.Id > 0)
             {
