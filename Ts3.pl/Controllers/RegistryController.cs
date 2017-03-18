@@ -27,6 +27,7 @@ namespace Ts3.pl.Controllers
                 {
                     ModelState.Clear();
                     ViewBag.SuccessMsg = "Konto zostało utworzone!";
+                    SessionPresister.UserName = user?.Name;
                     return RedirectToAction("Index", "Home");
                 }
                 else

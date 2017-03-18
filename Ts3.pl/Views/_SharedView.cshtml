@@ -52,8 +52,8 @@
                 <a class="navbar-brand" href="#">Miejsce na LOGO</a>
                 <div class="collapse navbar-collapse animated fadeIn" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav animated fadeIn text16 center-block">
-                        <li class="@Html.IsActive("Home","Index")"><a href="#"><span class="glyphicon glyphicon-home"></span> Strona główna</a></li>
-                        <li class=""><a href="@Url.Action("Index", "Home")"><span class="glyphicon glyphicon-th-large"></span> Dodaj Serwer DNS</a></li>
+                        <li class="@Html.IsActive("Home","Index")"><a href="@Url.Action("Index", "Home")"><span class="glyphicon glyphicon-home"></span> Strona główna</a></li>
+                        <li class=""><a href="#"><span class="glyphicon glyphicon-th-large"></span> Dodaj Serwer DNS</a></li>
                         <li class="@Html.IsActive("Forum","Index")"><a href="@Url.Action("Index", "Forum")"><span class="glyphicon glyphicon-th"></span> Forum</a></li>
                         <li class="@Html.IsActive("Registry","Index")"><a href="@Url.Action("Index", "Registry")"><span class="glyphicon glyphicon-pencil"></span> Rejestracja</a></li>
                     </ul>
