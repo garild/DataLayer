@@ -30,39 +30,20 @@
 
             <div class="row">
 
-                <div class="col-md-5">
-                    @Html.RadioButton("radB", 0, new { onClick = "ShowPartialView(0)", @class = "control -label" })
-                    @Html.Label("Nie posiadam Konto. Chce się zarejestrować!", new { @class = "control -label" })
 
-                    @Html.RadioButton("radB", 0, new { onClick = "ShowPartialView(1)", @class = "control-label" })
-                    @Html.Label("Chce się zalogować!", new { @class = "control-label" })
-                </div>
-                <div class="col-md-7" style="border-left:1px solid #ccc;height:450px">
-                    
-                        <div id="_Registry" style="display:none">
-                            @Html.Partial("_Registry", Model)
-                        </div>
-                        <div id="_LoginForm" style="display:none">
-                            @Html.Partial("_LoginForm", Model)
-                        </div>
-                    
-                </div>
+                @Html.Partial("_Registry", Model)
+
+
+
             </div>
         </div>
     </div>
+
 </body>
+
 @Scripts.Render("~/bundles/bootstrap")
-<script>
-    function ShowPartialView(id) {
-        if (id > 0) {
-            $("#_LoginForm").show();
-            $("#_Registry").hide();
-        }
+@Styles.Render("~/Content/bootstrap")
 
-        else {
-            $("#_LoginForm").hide();
-            $("#_Registry").show();
-        }
 
-    }
-</script>
+
+

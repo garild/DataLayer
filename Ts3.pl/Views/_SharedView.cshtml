@@ -1,82 +1,124 @@
-﻿<!DOCTYPE html>
-@using DataLayer.WebCommon.Authorization;
-<html class="cufon-active cufon-ready">
+﻿@model Ts3.pl.Models.Users
+@using Ts3.pl.Utilities
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
     <meta charset="utf-8">
-
-    <link rel="stylesheet" href="~/Content/css/reset.css" type="text/css" media="all">
-    <link rel="stylesheet" href="~/Content/css/layout.css" type="text/css" media="all">
-    <link rel="stylesheet" href="~/Content/css/style.css" type="text/css" media="all">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Forum :: Home Page</title>
+    <link href="~/Content/css/customs.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
 
-    <title>Ts3.pl</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/css/navbar.css">
+    <link href="~/Content/css/forumStyle.css" rel="stylesheet" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
-<body id="page1">
-    <div class="body1">
-        <div class="body4">
-            <div class="main">
-                <!-- header -->
-                <header>
-                    <div class="wrapper">
-                        <h1><a href="@Url.Action("Index","Home")" id="logo">Darmowy Serwer DNS</a></h1>
-                        <nav>
-                            Jesteś zalogowany:<input type="text" class="logout" value="@SessionPresister.UserName" disabled="disabled"/>
-                            
-                            <ul id="menu">
-                                <li id="nav1" class="active"><a href="@Url.Action("Index","Home")">Home<span>Witaj!</span></a></li>
-                                <li id="nav3"><a href="services.html">Serwery<span>Dodaj!</span></a></li>
-                                <li id="nav4"><a href="products.html">Forum<span>forum</span></a></li>
-                                <li id="nav5"><a href="contacts.html">Kontant<span>Napisz do Nas!</span></a></li>
-                                <li id="nav2"><a href="@Url.Action("Index","Registry")">Rejestracja<span>Logowanie</span></a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="row">
+<body>
 
-                        @RenderBody()
+    <div class="container-fluid">
 
-                    </div>
-                </header>
-                <!-- header end-->
-            </div>
-        </div>
-    </div>
+        <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
 
-    <div class="row">
-        <div class="body4">
-            <div class="main">
-                <div class="wrapper">
-                    <section class="col3">
-                        <h4>Address</h4>
-                        <ul class="address">
-                            <li><span>Country:</span>USA</li>
-                            <li><span>City:</span>San Diego</li>
-                            <li><span>Phone:</span>8 800 154-45-67</li>
-                            <li><span>Email:</span><a href="#">progress@mail.com</a></li>
-                        </ul>
-                    </section>
-                    <section class="col2 pad_left2">
-                        <h4>Follow Us</h4>
-                        <ul id="icons">
-                            <li><a href="#"><img src="~/Content/images/icon1.jpg" alt="">Facebook</a></li>
-                            <li><a href="#"><img src="~/Content/images/icon2.jpg" alt="">Twitter</a></li>
-                            <li><a href="#"><img src="~/Content/images/icon3.jpg" alt="">LinkedIn</a></li>
-                            <li><a href="#"><img src="~/Content/images/icon4.jpg" alt="">Delicious</a></li>
-                        </ul>
-                    </section>
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
+                <!-- logo -->
+                <a class="navbar-brand" href="#">Miejsce na LOGO</a>
+                <div class="collapse navbar-collapse animated fadeIn" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav animated fadeIn text16 center-block">
+                        <li class="@Html.IsActive("Home","Index")"><a href="#"><span class="glyphicon glyphicon-home"></span> Strona główna</a></li>
+                        <li class=""><a href="@Url.Action("Index", "Home")"><span class="glyphicon glyphicon-th-large"></span> Dodaj Serwer DNS</a></li>
+                        <li class="@Html.IsActive("Forum","Index")"><a href="@Url.Action("Index", "Forum")"><span class="glyphicon glyphicon-th"></span> Forum</a></li>
+                        <li class="@Html.IsActive("Registry","Index")"><a href="@Url.Action("Index", "Registry")"><span class="glyphicon glyphicon-pencil"></span> Rejestracja</a></li>
+                    </ul>
+                    @{ Html.RenderPartial("_LoginForm");  } <!-- LOGOWANIE -->
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
 
-                <footer>
-                    Copyright &copy; <a href="#">Ts3.pl</a> All Rights Reserved<br>
-                    Design by <a target="_blank" href="http://www.templatemonster.com/">TemplateMonster.com</a>
-                </footer>
-            </div>
-        </div>
+        <!-- Second Nav -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- Brand -->
+                    <a class="navbar-brand" href="#">Panel Administratora</a>
+                </div>
+                <div class="collapse navbar-collapse animated fadeIn" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav animated fadeIn">
+                        <li class="active"><a href="#">Lista użytkowników</a></li>
+                        <li><a href="#">Serwery DNS</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Forum <span class="caret"></span></a>
+                            <ul class="dropdown-menu animated flipInX" role="menu">
+                                <li><a href="#"> Lista tematów</a></li>
+                                
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
     </div>
+    <div class="container"></div>
+    <section class="content">
+        <div class="container" style="padding-top:40px">
+            @RenderBody()
+        </div>
+    </section>
+
+    @*<footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-1 col-xs-3 col-sm-2 logo "><a href="#"><img src="images/logo.jpg" alt="" /></a></div>
+                        <div class="col-lg-8 col-xs-9 col-sm-5 ">Copyrights 2014, websitename.com</div>
+                        <div class="col-lg-3 col-xs-12 col-sm-5 sociconcent">
+                            <ul class="socialicons">
+                                <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="#"><i class="fa fa-cloud"></i></a></li>
+                                <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>*@
+
 </body>
-@Scripts.Render("~/bundles/bootstrap")
-@Styles.Render("~/Content/bootstrap")
+
 </html>
