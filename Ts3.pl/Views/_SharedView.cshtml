@@ -8,12 +8,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Forum :: Home Page</title>
-    <link href="~/Content/css/customs.css" rel="stylesheet" />
+
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.js"></script>
-
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/07b0ce5d10.js"></script>
+    <script src="~/Scripts/jquery-3.1.0.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -25,6 +29,7 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/Content/css/navbar.css">
     <link href="~/Content/css/forumStyle.css" rel="stylesheet" />
+    <link href="~/Content/css/customs.css" rel="stylesheet" />
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -32,7 +37,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -81,7 +85,7 @@
 
         <nav class="navbar navbar-default navbar-static-top" role="navigation">
             <div class="container-fluid">
-                @if (User.IsInRole("Ts3UA"))
+                @if (User.IsInRole("ForumModelator"))
                 {
                     <div class="navbar-header">
 
@@ -115,47 +119,30 @@
 
                 }
             </div><!-- /.container-fluid -->
-
         </nav>
-
     </div>
-    <section class="content">
-        <section id="RenderBody">
-
-            <div class="container">
-                <div class="row">
-                    <div class="clearfix"></div>
-                    <div class="col-lg-8 col-md-8">
-
-                        @RenderBody()
-
-                    </div>
-
-                </div>
-            </div>
-        </section>
 
 
-        @*<footer>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-1 col-xs-3 col-sm-2 logo "><a href="#"><img src="images/logo.jpg" alt="" /></a></div>
-                            <div class="col-lg-8 col-xs-9 col-sm-5 ">Copyrights 2014, websitename.com</div>
-                            <div class="col-lg-3 col-xs-12 col-sm-5 sociconcent">
-                                <ul class="socialicons">
-                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-cloud"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>*@
-    </section>
+    @RenderBody()
+
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].onclick = function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            }
+        }
+    </script>
+
+
 </body>
-
 </html>

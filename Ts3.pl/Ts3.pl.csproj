@@ -32,7 +32,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+    <FilesToIncludeForPublish>AllFilesInProjectFolder</FilesToIncludeForPublish>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -168,6 +168,7 @@
     <Content Include="Content\css\layout.css" />
     <Content Include="Content\css\navbar.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\ForumContent\style.css" />
     <Content Include="Content\css\MainTopic.css" />
     <Content Include="Content\ForumContent\bidi.css" />
     <Content Include="Content\ForumContent\bootstrap-responsive.css" />

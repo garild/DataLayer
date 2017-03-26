@@ -14,7 +14,7 @@
                 @using (Html.BeginForm("AddNewTopic", "Forum", FormMethod.Post))
                 {
                     <div id="AddPost" style="display:none">
-                        <div class="panel panel-default">
+                        <div class="content-title">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
                                     <span class="glyphicon glyphicon-file">
@@ -51,9 +51,6 @@
         </div>
     </div>
 </section>
-
-@Scripts.Render("~/bundles/bootstrap")
-@Styles.Render("~/Content/bootstrap")
 
 
 <script>
