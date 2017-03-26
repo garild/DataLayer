@@ -41,7 +41,6 @@ namespace Ts3.pl.Controllers
 
        
         [HttpPost]
-      
         public ActionResult AddNewTopic(string title, string bodyContent)
         {
             if (SessionPresister.UserId > 0)
@@ -54,7 +53,7 @@ namespace Ts3.pl.Controllers
         }
 
         [HttpPost]
-        public ViewResult FindTopic(string search)
+        public ActionResult FindTopic(string search)
         {
             if (!string.IsNullOrEmpty(search))
             {
@@ -66,7 +65,7 @@ namespace Ts3.pl.Controllers
                 }
 
             }
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
         [Route("BlockPost/{Id}")]
