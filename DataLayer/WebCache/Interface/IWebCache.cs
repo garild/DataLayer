@@ -10,7 +10,6 @@ namespace DataLayer
     interface IWebCache
     {
         TResultType GetorSetCache<TResultType>(string key, Func<TResultType> getdata, TimeSpan ExpirationTime = default(TimeSpan), CacheItemPriority? cacheItemPriority = null);
-        TResultType GetCache<TResultType>(string key);
-        void ClearCache(string key);
+      
     }
 }

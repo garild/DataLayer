@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using Ts3.pl.Models.Repository.User.Interface;
 using DataLayer.WebCommon.Security;
-using DataLayer.ResultType.Implementation;
 using DataLayer.ResultType.Type;
 using DataLayer.ResultType.Interface;
 

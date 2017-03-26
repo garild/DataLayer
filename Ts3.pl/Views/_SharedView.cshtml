@@ -1,5 +1,6 @@
-﻿@model Ts3.pl.Models.Users
+﻿
 @using Ts3.pl.Utilities
+@model Ts3.pl.SharedModel.ForumViewModel
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +10,7 @@
     <title>Forum :: Home Page</title>
     <link href="~/Content/css/customs.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.js"></script>
+
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.js"></script>
 
@@ -49,7 +50,7 @@
                     </button>
                 </div>
                 <!-- logo -->
-                <a class="navbar-brand" href="#">Miejsce na LOGO</a>
+                <a class="navbar-brand" href=""><img src="~/Content/images/logoTs.jpg" alt="Dispute Bills"></a>
                 <div class="collapse navbar-collapse animated fadeIn" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav animated fadeIn text16 center-block">
                         <li class="@Html.IsActive("Home","Index")"><a href="@Url.Action("Index", "Home")"><span class="glyphicon glyphicon-home"></span> Strona główna</a></li>
@@ -57,68 +58,104 @@
                         <li class="@Html.IsActive("Forum","Index")"><a href="@Url.Action("Index", "Forum")"><span class="glyphicon glyphicon-th"></span> Forum</a></li>
                         <li class="@Html.IsActive("Registry","Index")"><a href="@Url.Action("Index", "Registry")"><span class="glyphicon glyphicon-pencil"></span> Rejestracja</a></li>
                     </ul>
-                    @{ Html.RenderPartial("_LoginForm");  } <!-- LOGOWANIE -->
+
+                    @{ Html.RenderPartial("_LoginForm");} <!-- LOGOWANIE -->
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
-
-        <!-- Second Nav -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <!-- Brand -->
-                    <a class="navbar-brand" href="#">Panel Administratora</a>
-                </div>
-                <div class="collapse navbar-collapse animated fadeIn" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav animated fadeIn">
-                        <li class="active"><a href="#">Lista użytkowników</a></li>
-                        <li><a href="#">Serwery DNS</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Forum <span class="caret"></span></a>
-                            <ul class="dropdown-menu animated flipInX" role="menu">
-                                <li><a href="#"> Lista tematów</a></li>
-                                
-                            </ul>
-                        </li>
-                    </ul>
-
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>
-    </div>
-    <div class="container"></div>
-    <section class="content">
-        <div class="container" style="padding-top:40px">
-            @RenderBody()
-        </div>
-    </section>
-
-    @*<footer>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-1 col-xs-3 col-sm-2 logo "><a href="#"><img src="images/logo.jpg" alt="" /></a></div>
-                        <div class="col-lg-8 col-xs-9 col-sm-5 ">Copyrights 2014, websitename.com</div>
-                        <div class="col-lg-3 col-xs-12 col-sm-5 sociconcent">
-                            <ul class="socialicons">
-                                <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fa fa-cloud"></i></a></li>
-                                <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                            </ul>
-                        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <form class="navbar-form navbar-left">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
                     </div>
                 </div>
-            </footer>
-        </div>*@
+            </form>
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+        <!-- Second Nav -->
 
+        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="container-fluid">
+                @if (User.IsInRole("Ts3UA"))
+                {
+                    <div class="navbar-header">
+
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!-- Brand -->
+                        <a class="navbar-brand" href="#">Panel Administratora</a>
+                    </div>
+                    <div class="collapse navbar-collapse animated fadeIn" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav animated fadeIn">
+                            <li class="active"><a href="#">Lista użytkowników</a></li>
+                            <li><a href="#">Serwery DNS</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Forum <span class="caret"></span></a>
+                                <ul class="dropdown-menu animated flipInX" role="menu">
+                                    <li><a href="#"> Lista tematów</a></li>
+
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </div><!-- /.navbar-collapse -->
+                }
+                @if (Html.ShowPartialView("Forum"))
+                {
+                    Html.RenderPartial("_ForumNavBar");
+
+                }
+            </div><!-- /.container-fluid -->
+
+        </nav>
+
+    </div>
+    <section class="content">
+        <section id="RenderBody">
+
+            <div class="container">
+                <div class="row">
+                    <div class="clearfix"></div>
+                    <div class="col-lg-8 col-md-8">
+
+                        @RenderBody()
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        @*<footer>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-1 col-xs-3 col-sm-2 logo "><a href="#"><img src="images/logo.jpg" alt="" /></a></div>
+                            <div class="col-lg-8 col-xs-9 col-sm-5 ">Copyrights 2014, websitename.com</div>
+                            <div class="col-lg-3 col-xs-12 col-sm-5 sociconcent">
+                                <ul class="socialicons">
+                                    <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-cloud"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>*@
+    </section>
 </body>
 
 </html>

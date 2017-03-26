@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using DataLayer.ResultType.Interface;
 
 namespace DataLayer.WebCommon.Authorization
 {
@@ -19,10 +20,9 @@ namespace DataLayer.WebCommon.Authorization
             return User;
         }
 
-        public List<string> GetUserRoles(int id)
+        public IDataResult<string> GetUserRoles(int id)
         {
-            User.Roles = QueryMultiData<List<string>>("GetUserRoles", new { UserId = id }) as List<string>;
-            return User.Roles;
+          return FillObject<string>("Ts3_pl_User_GetUserRole", new { UserId = id });
         }
     }
 }

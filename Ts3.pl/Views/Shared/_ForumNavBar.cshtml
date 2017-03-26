@@ -1,0 +1,38 @@
+﻿@using DataLayer.WebCommon.Authorization;
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<header>
+    <div class="collapse navbar-collapse" style="margin-left:calc(100%/4);margin-top:5px;margin-bottom:5px">
+        <div class="navbar-header">
+
+            @using (Html.BeginForm("FindTopic", "Forum", new { Search = "search" }, FormMethod.Post))
+            {
+                <div class="col-sm-3 col-md-12">
+                    <div class="navbar-form">
+                        @if (SessionPresister.UserId == default(int))
+                        {
+                            <center>
+                                <b>Zaloguj się!</b> Aby dodać nowy post musisz być <b>zalogowany</b>
+                            </center>
+                        }
+                        <div class="input-group">
+                            @if (SessionPresister.UserId > 0)
+                            {
+                                <a role="button" class="btn btn-success" onclick="AddNewPost()"><i class="glyphicon glyphicon-plus"></i> Dodaj nowy post </a>
+                            }
+
+                        </div>
+
+                        <div class="input-group">
+                            <input type="text" name="search" class="form-control" placeholder="Szukaj..." style="width:440px">
+                            <div class="input-group-btn">
+                                <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
+</header>

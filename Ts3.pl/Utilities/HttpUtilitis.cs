@@ -20,5 +20,16 @@ namespace Ts3.pl.Utilities
 
             return returnActive ? "active" : "";
         }
+
+        public static bool ShowPartialView(this HtmlHelper html, string control)
+        {
+            var routeData = html.ViewContext.RouteData;
+           
+            var routeControl = (string)routeData.Values["controller"];
+
+            var returnActive = control == routeControl;
+
+            return returnActive;
+        }
     }
 }

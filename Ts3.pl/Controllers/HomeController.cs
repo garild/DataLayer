@@ -1,4 +1,5 @@
 ﻿using DataLayer.WebCommon.Authorization;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace Ts3.pl.Controllers
@@ -11,5 +12,6 @@ namespace Ts3.pl.Controllers
         {
             return View();
         }
+
     }
 }

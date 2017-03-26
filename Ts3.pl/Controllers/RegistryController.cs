@@ -1,13 +1,13 @@
 ﻿using DataLayer.WebCommon.Authorization;
 using DataLayer.WebCommon.Security;
 using System.Web.Mvc;
+using System.Web.Security;
 using Ts3.pl.Models;
 using Ts3.pl.Models.Repository.User.Implementation;
-
+using Ts3.pl.SharedModel;
 
 namespace Ts3.pl.Controllers
 {
-    [RoutePrefix("")]
     public class RegistryController : Controller
     {
         private static UsersRepository _userRepository = new UsersRepository();
@@ -37,21 +37,30 @@ namespace Ts3.pl.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(Users data)
+        public ActionResult Login(ForumViewModel data)
         {
-            if(!string.IsNullOrEmpty(data?.DisplayName) && !string.IsNullOrEmpty(data?.Password))
+            if (!string.IsNullOrEmpty(data.Users?.DisplayName) && !string.IsNullOrEmpty(data.Users?.Password))
             {
                 var userAcount = new AccountVM();
-                var user = userAcount.FindUser(data.DisplayName);
-                var exists = Security.VerifyHashedPassword(user?.Password, data.Password);
-                if(exists && !string.IsNullOrEmpty(user?.Name))
+                var user = userAcount.FindUser(data.Users.DisplayName);
+                var exists = Security.VerifyHashedPassword(user?.Password, data.Users.Password);
+                if (exists && !string.IsNullOrEmpty(user?.Name))
                 {
-                    SessionPresister.UserName = user?.Name;
+                    new Ts3Principal(user);
+                    SessionPresister.UserName = user.Name;
+                    SessionPresister.UserId = user.Id;
                     return RedirectToAction("Index", "Home");
                 }
                 else
                     ViewBag.ErrorMsg = "Podany login lub hasło jest nieprawidłowe.";
             }
+            return View("Index");
+        }
+
+        public ActionResult LogOut()
+        {
+            Session.Clear();
+            FormsAuthentication.SignOut();
             return View("Index");
         }
     }

@@ -12,7 +12,6 @@
     }
 </style>
 
-
 <body>
 
     @if (!string.IsNullOrEmpty(Html.ViewBag.ErrorMsg))
@@ -22,22 +21,8 @@
             <strong>Błąd!</strong> @ViewBag.ErrorMsg
         </div>
     }
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h3 class="panel-title">Rejestracja - utwórz konto! / Logowanie - zaloguj się </h3>
-        </div>
-        <div class="panel-body">
 
-            <div class="row">
-
-
-                @Html.Partial("_Registry", Model)
-
-
-
-            </div>
-        </div>
-    </div>
+    @{Html.RenderPartial("_Registry", Model); }
 
 </body>
 

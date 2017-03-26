@@ -17,7 +17,7 @@ namespace DataLayer
         private static object syncLock = new Object();
         private static SqlConnection _connetion = null;
 
-        public Datalayers()
+        public Datalayers() // TODO singleton jako sql multi - conn
         {
             lock (syncLock)
             {
@@ -35,12 +35,23 @@ namespace DataLayer
         }
 
 
-        public IDataResult<TResult> QueryMultiData<TResult>(string procedureName, object param = null) where TResult : new()
+        public IDataResult<TResult> QueryMultiData<TResult>(string procedureName, object param = null) where TResult : class,new()
+                                                                                                        
         {
             using (var conn = new SqlConnection(BaseConnection))
             {
-                var data = SqlMapper.Query<TResult>(conn, procedureName, param, commandType: CommandType.StoredProcedure).ToList();
+                var data = SqlMapper.Query<TResult>(conn, procedureName, param, commandType: CommandType.StoredProcedure).AsList();
                 return new QueryResult<TResult>() { valueList = data };
+            }
+        }
+
+        public IDataResult<UResult> FillObject<UResult>(string procedureName, object param = null) where UResult : IEquatable<UResult>
+
+        {
+            using (var conn = new SqlConnection(BaseConnection))
+            {
+                var data = SqlMapper.Query<UResult>(conn, procedureName, param, commandType: CommandType.StoredProcedure).AsList();
+                return new QueryResult<UResult>() { valueList = data };
             }
         }
 

@@ -1,9 +1,13 @@
-﻿
-.navbar-brand img {
-    max-width: 100%;
-    height: 50px;
-    margin-top: -15px;
+﻿.navbar-brand {
+  background: url(http://disputebills.com/site/uploads/2015/10/dispute.png) center / contain no-repeat;
+  width: 200px;
 }
+.navbar-brand>img {
+  height: 100%;
+  padding: 15px; /* firefox bug fix */
+  width: auto;
+}
+
 .navbar-inverse {
     background: #4D5061;
     border-bottom: 4px solid #60B078;

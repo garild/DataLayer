@@ -4,53 +4,94 @@
     Layout = "~/Views/_SharedView.cshtml";
 }
 <link href="~/Content/css/MainTopic.css" rel="stylesheet" />
-<div class="container">
-    <div class="col-md-8 center-block">
-        <div class="panel panel-default panelD">
-            <div class="panel-heading">
-                <ul class="list-inline">
-                    <li>###Admin</li>
-                    <li class="pull-right" style="padding-right: 0;">1 week</li>
-                </ul>
+<header>
+    <div class="container" style="margin-top:20px">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <div id="postlist">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div class="text-center">
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <h3 class="pull-left">Welcome</h3>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <h4 class="pull-right">
+                                            <small><em>2014-07-30<br>18:30:00</em></small>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="panel-body">
+                                <h4>
+                                    Czym jest ts3.pl ?
+                                </h4>
+                                Serwis ts3.pl jest darmową usługą DNS pozwalającą na łączenie się z twoim serwerem TeamSpeak3 za pośrednictwem domeny ts3.pl
+
+                                <h4>
+                                    Jak to działa?
+                                </h4>
+                                Serwer DNS ts3.pl zamienia twój IP:PORT na dowolną wymyśloną przez Ciebie nazwę  twojserwer.ts3.pl.
+
+                                Użytkownik wpisujący w polu "Connect" adres twojserwer.ts3.pl wyśle zapytanie do serwera DNS, a serwer DNS przekieruje go na twój serwer teamspeak IP:PORT.
+
+                            </div>
+
+                            <div class="panel-footer">
+                                <span class="label label-default">Welcome</span> <span class="label label-default">Updates</span> <span class="label label-default">July</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <div class="text-center">
+                                <div class="row">
+                                    <div class="col-sm-9">
+                                        <h3 class="pull-left"> Co Zyskujesz? </h3>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <h4 class="pull-right">
+                                            <small><em>2014-07-30 18:30:00</em></small>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel-body">
+                            <a href="#" class="thumbnail">
+                                <img alt="Image" src="~/Content/images/ImageContent.jpeg">
+                            </a>
+                            <blockquote>
+
+                                Otrzymujesz łatwy do zapamiętania adres swojego serwera.
+
+                                Nie musisz już podawać trudnego złożonego adresu z portem swojego serwera swoim użytkownikom.
+
+                                Prawdziwy adres IP twojego serwera zostaje ukryty.
+                            </blockquote>
+                            <span class="tagz">Tags: <a>#WelcomeOnTs3.pl</a></span>
+                        </div>
+
+                        <div class="panel-footer">
+                            <span class="label label-default">Image</span> <span class="label label-default">Updates</span> <span class="label label-default">July</span>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="text-center"><a href="#" id="loadmore" class="btn btn-primary">Older Posts...</a></div>*@
             </div>
-            <div class="panel-image">
-                <img src="~/Content/images/ImageContent.jpeg" class="panel-image-preview" />
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
             </div>
-            <div class="panel-body">
-                <blockquote>
-                    <h4>
-                        Czym jest ts3.pl ?
-                    </h4>
-                    Serwis ts3.pl jest darmową usługą DNS pozwalającą na łączenie się z twoim serwerem TeamSpeak3 za pośrednictwem domeny ts3.pl
-
-                    <h4>
-                        Jak to działa?
-                    </h4>
-                    Serwer DNS ts3.pl zamienia twój IP:PORT na dowolną wymyśloną przez Ciebie nazwę  twojserwer.ts3.pl.
-
-                    Użytkownik wpisujący w polu "Connect" adres twojserwer.ts3.pl wyśle zapytanie do serwera DNS, a serwer DNS przekieruje go na twój serwer teamspeak IP:PORT.
-
-                    <h4>
-                        Co Zyskujesz?
-                    </h4>
-                    Otrzymujesz łatwy do zapamiętania adres swojego serwera.
-
-                    Nie musisz już podawać trudnego złożonego adresu z portem swojego serwera swoim użytkownikom.
-
-                    Prawdziwy adres IP twojego serwera zostaje ukryty.
-                </blockquote>
-                <span class="tagz">Tags: <a>#WelcomeOnTs3.pl</a></span>
-            </div>
-            <div class="panel-footer">
-                @*<ul class="list-inline clearfix">
-                        <li class="col-sm-4 col-md-4 col-lg-4 level-line-up"><a href=""><span class="fa fa-thumbs-o-up"></span> Like</a><span>10</span></li>
-                        <li class="col-sm-4 col-md-4 col-lg-4 level-line-up"><center><a href=""><span class="fa fa-comments"></span> </a><span>10</span></center></li>
-                        <li class="col-sm-4 col-md-4 col-lg-4" style="padding-right: 0;"><span class="pull-right">10</span><a class="pull-right" href=""><span class="fa fa-bomb"></span> Nutty</a></li>
-                    </ul>*@
+            <div class="col-md-1">
             </div>
         </div>
     </div>
-    <div class="col-md-3"></div>
-</div>
+</header>
 @Scripts.Render("~/bundles/bootstrap")
 @Styles.Render("~/Content/bootstrap")

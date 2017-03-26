@@ -9,8 +9,9 @@ namespace DataLayer.WebCommon.Authorization
 {
     public static class SessionPresister
     {
-        static string SessionUserName = "";
-        static string SessionUserPassword = "";
+        static string SessionUserName = "UserName";
+        static string SessionUserId = "UserId";
+
         public static string UserName
         {
             get
@@ -28,20 +29,20 @@ namespace DataLayer.WebCommon.Authorization
             }
         }
 
-        public static string Password
+        public static int UserId
         {
             get
             {
                 if (HttpContext.Current == null)
-                    return string.Empty;
-                var sessionVar = HttpContext.Current.Session[SessionUserPassword];
+                    return default(int);
+                var sessionVar = HttpContext.Current.Session[SessionUserId];
                 if (sessionVar != null)
-                    return sessionVar as string;
-                return null;
+                    return (int)sessionVar;
+                return default(int);
             }
             set
             {
-                HttpContext.Current.Session[SessionUserPassword] = value;
+                HttpContext.Current.Session[SessionUserId] = value;
             }
         }
     }

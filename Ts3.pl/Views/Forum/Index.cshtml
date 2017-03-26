@@ -1,4 +1,6 @@
-﻿@{
+﻿@model  Ts3.pl.SharedModel.ForumViewModel
+@using DataLayer.WebCommon.Authorization;
+@{
     ViewBag.Title = "Forum";
     Layout = "~/Views/_SharedView.cshtml";
 }
@@ -6,49 +8,105 @@
 <section class="content">
     <div class="container">
         <div class="row">
+            <div class="clearfix"></div>
             <div class="col-lg-8 col-md-8">
+
+                @using (Html.BeginForm("AddNewTopic", "Forum", FormMethod.Post))
+                {
+                    <div id="AddPost" style="display:none">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <span class="glyphicon glyphicon-file">
+                                    </span> Utwórz post
+                                    <a href="#" class="pull-right" onclick="AddNewPost()"><i class="glyphicon glyphicon-remove"></i></a>
+                                </h4>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.TextBox("Title", null, new { @class = "form-control", @placeholder = "Tytuł...", @value = "..." })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextArea("BodyContent", null, new { @class = "form-control", wrap = "soft", @style = "resize:none", @placeholder = "Treść..." })
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" style="width:250px" class="btn btn-sm btn-primary pull-right">Dodaj</button>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+
+                @{
+                    Html.RenderPartial("_ListView", Model);
+                }
+
                 <!-- POST -->
-                <div class="post">
-                    <div class="wrap-ut pull-left">
-                        <div class="userinfo pull-left">
-                            <div class="avatar">
-                                <img src="~/Content/images/avatar.jpg" alt="" />
-                                <div class="status green">&nbsp;</div>
-                            </div>
-
-                            <div class="icons">
-                                <img src="~/Content/images/icon1.jpg" alt="" /><img src="~/Content/images/icon4.jpg" alt="" />
-                            </div>
-                        </div>
-                        <div class="posttext pull-left">
-                            <h2><a href="02_topic.html">10 Kids Unaware of Their Halloween Costume</a></h2>
-                            <p>It's one thing to subject yourself to a Halloween costume mishap because, hey, that's your prerogative.</p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="postinfo pull-left">
-                        <div class="comments">
-                            <div class="commentbg">
-                                560
-                                <div class="mark"></div>
-                            </div>
-
-                        </div>
-                        <div class="views"><i class="fa fa-eye"></i> 1,568</div>
-                        <div class="time"><i class="fa fa-clock-o"></i> 24 min</div>
-                    </div>
-                    <div class="clearfix"></div>
-                </div><!-- POST -->
-
             </div>
 
         </div>
     </div>
 </section>
 
-
 @Scripts.Render("~/bundles/bootstrap")
 @Styles.Render("~/Content/bootstrap")
+
+
+<script>
+    function AddNewPost() {
+        if (!$('#AddPost').is(':visible')) {
+            $('#AddPost').fadeIn("3000");;
+        } else
+            $("#AddPost").fadeOut(1000);
+    }
+
+</script>
+
+@*<div class="forumbg<!-- IF topicrow.S_TOPIC_TYPE_SWITCH and (topicrow.S_POST_ANNOUNCE or topicrow.S_POST_GLOBAL) --> announcement<!-- ENDIF -->">
+
+        <table class="table table-striped table-bordered" style="margin-bottom: 15px;">
+            <thead class="topiclist">
+                <tr class="header">
+
+                    <th width="50%">{L_ACTIVE_TOPICS}</th>
+                    <th class="posts">{L_REPLIES}</th>
+                    <th class="views">{L_VIEWS}</th>
+                    <th class="lastpost"><span>{L_LAST_POST}</span></th>
+
+                </tr>
+            </thead>
+            <tbody class="topiclist topics">
+
+                <tr class="t-row info-color">
+
+                    <td class="info-color " width="50%" title="">
+                        <a href="url">IMAGE</a> <span class="label label-warning pull-right">GLOBAL</span> <span class="label label-info pull-right">ANNOUNCEMENT</span>
+                        <span class="label label-success pull-right">STICKY</span>
+                        <i class="pcon" style="background-repeat: no-repeat;"></i><a href="" class="topictitle"> Topic Title</a>
+                        <a href="">IMG</a>
+                        <a href=""><span class="label label-important pull-right"><i class="icon-exclamation-sign icon-white"></i></span></a><br />
+                        <div class="p-pagination pull-right"><span>{topicrow.PAGINATION}</span></div>
+                        &raquo;
+                        &raquo;  <a href=""></a>
+                    </td>
+                    <td class="posts"><center><span class="badge"></span></center></td>
+                    <td class="views"><center><span class="badge"></span></center></td>
+                    <td class="lastpos">
+                        <span>
+                            <dfn></dfn>
+                            <a href=""></a> <br />
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>*@
+
 
 
 

@@ -57,6 +57,10 @@
       <HintPath>..\packages\Cassette.2.4.2\lib\net40-client\Cassette.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.DependencyCollector, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.1.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
       <Private>True</Private>
@@ -376,6 +380,7 @@
     <Content Include="Content\ForumContent\stylesheet.css" />
     <Content Include="Content\ForumContent\tweaks.css" />
     <Content Include="Content\images\avatar.jpg" />
+    <Content Include="Content\images\avatar_forum_post.jpg" />
     <Content Include="Content\images\bg.jpg" />
     <Content Include="Content\images\bg_slider.gif" />
     <Content Include="Content\images\bg_testimonials.gif" />
@@ -431,6 +436,13 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Compile Include="Models\Forum\Category.cs" />
+    <Compile Include="Models\Forum\Comments.cs" />
+    <Compile Include="Models\Forum\Forum.cs" />
+    <Compile Include="Models\Forum\Topics.cs" />
+    <Compile Include="Repository\Forum\Implementation\ForumRepository.cs" />
+    <Compile Include="Repository\Forum\Interface\IForumRepository.cs" />
+    <Compile Include="SharedModel\ForumViewModel.cs" />
     <Compile Include="Utilities\HttpUtilitis.cs" />
     <Content Include="Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -447,9 +459,9 @@
     </Compile>
     <Compile Include="Repository\User\Implementation\UsersRepository.cs" />
     <Compile Include="Repository\User\Interface\IUserRepository.cs" />
-    <Compile Include="Models\Roles.cs" />
-    <Compile Include="Models\UserRoles.cs" />
-    <Compile Include="Models\Users.cs" />
+    <Compile Include="Models\User\Roles.cs" />
+    <Compile Include="Models\User\UserRoles.cs" />
+    <Compile Include="Models\User\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -465,6 +477,8 @@
     <Content Include="Views\Registry\_Registry.cshtml" />
     <Content Include="Views\Shared\_LoginForm.cshtml" />
     <Content Include="Views\Forum\Index.cshtml" />
+    <Content Include="Views\Shared\_ForumNavBar.cshtml" />
+    <Content Include="Views\Forum\_ListView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
