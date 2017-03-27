@@ -7,7 +7,7 @@ namespace Ts3.pl.Models
 {
     public class Forum
     {
-        public List<Topics> Topics { get; set; }
+        public List<Post> Topics { get; set; }
         public List<Category> Categories { get; set; }
     }
 }

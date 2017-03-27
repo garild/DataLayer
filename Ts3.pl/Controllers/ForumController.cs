@@ -20,13 +20,23 @@ namespace Ts3.pl.Controllers
         [Ts3Authorize]
         public ViewResult Index()
         {
-            var data = _forumRepository.GetTopTopics();
-            DeserializeComents(data.valueList);
-            var list = new ForumViewModel() { Topics = new List<Topics>(data.valueList) };
+            var data = _forumRepository.GetMainTopic();
+          
+            var list = new ForumViewModel() { MainTopics = new List<Topics>(data.valueList) };
             return View(list);
         }
 
-        private void DeserializeComents(List<Topics> valueList)
+
+        //[Ts3Authorize]
+        //public ViewResult Index()
+        //{
+        //    var data = _forumRepository.GetTopPost();
+        //    DeserializeComents(data.valueList);
+        //    var list = new ForumViewModel() { Topics = new List<Post>(data.valueList) };
+        //    return View(list);
+        //}
+
+        private void DeserializeComents(List<Post> valueList)
         {
             valueList?.ForEach(p =>
             {
@@ -60,7 +70,7 @@ namespace Ts3.pl.Controllers
                 var result = _forumRepository.FindTopics(search);
                 if (result.success)
                 {
-                    var forumVM = new ForumViewModel() { Topics = result.valueList };
+                    var forumVM = new ForumViewModel() { PostList = result.valueList };
                     return View("Index", forumVM);
                 }
 
@@ -80,6 +90,14 @@ namespace Ts3.pl.Controllers
         {
             var result = _forumRepository.DeletePost(Id); // TODO dodać obłsugę błędu
             return RedirectToAction("Index");
+        }
+
+        [Route("ViewPostList/{Id}")]
+        public ActionResult ViewPostList(int Id)
+        {
+            var result = _forumRepository.GetPostListForTopic(Id); // TODO dodać obłsugę błędu
+            var list = new ForumViewModel() { PostList = new List<Post>(result.valueList) };
+            return View(list);
         }
     }
 }

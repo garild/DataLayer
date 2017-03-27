@@ -1,7 +1,9 @@
-
+.navbar-inverse .navbar-nav>li>a {
+    color: #fff !important;
+}
 body {
     font-family: 'Open Sans Light', sans-serif;
-    font-size: 14px;
+    font-size: 10px;
     color: #989c9e;
 }
 
@@ -47,7 +49,7 @@ body {
 .content-title{padding:5px;background-color:#fff;}
 .content-title h3 a{color:#34495E;text-decoration:none; transition: 0.5s;}
 .content-title h3 a:hover{color:#F39C12; }
-.content-footer{background-color:#16A085;padding:10px;position: relative;}
+.content-footer{background-color:#703984;padding:10px;position: relative;}
 .content-footer span a {
     color: #fff;
     display: inline-block;

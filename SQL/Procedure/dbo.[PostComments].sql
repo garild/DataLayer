@@ -16,7 +16,7 @@ ALTER TABLE [dbo].[PostComments](
 	[BodyContent] [nvarchar](4000) NOT NULL,
 	[Deleted] [bit] NOT NULL,
 	[CreateDate] [datetime] NULL,
- CONSTRAINT [PK_PostComment] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_TopicComment] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -24,7 +24,7 @@ ALTER TABLE [dbo].[PostComments](
 
 GO
 
-ALTER TABLE [dbo].[PostComments]  WITH CHECK ADD  CONSTRAINT [FK_PostComments_UserId] FOREIGN KEY([UserId])
+ALTER TABLE [dbo].[PostComments]  WITH CHECK ADD  CONSTRAINT [FK_TopicComments_UserId] FOREIGN KEY([UserId])
 REFERENCES [dbo].[Users] ([Id])
 GO
 

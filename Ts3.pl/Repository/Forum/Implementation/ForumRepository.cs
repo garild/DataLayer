@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using DataLayer;
+﻿using DataLayer;
 using DataLayer.ResultType.Interface;
 using DataLayer.ResultType.Type;
 using Ts3.pl.Repository.Forum.Interface;
 using Ts3.pl.Models;
-using Dapper;
 using System.Configuration;
-using System.Data.SqlClient;
-using Ts3.pl.SharedModel;
-using DataLayer.WebCommon.Authorization;
-using DataLayer.ResultType.Repository;
 
 namespace Ts3.pl.Repository.Forum.Implementation
 {
-    public class ForumRepository : Datalayers,IForumRepository
+    public class ForumRepository : Datalayers, IForumRepository
     {
         private readonly string BaseConnection = ConfigurationManager.ConnectionStrings["BaseConnection"].ConnectionString;
 
@@ -29,14 +22,14 @@ namespace Ts3.pl.Repository.Forum.Implementation
             });
         }
 
-        public IDataResult<Topics> FindTopics(string search)
+        public IDataResult<Post> FindTopics(string search)
         {
-            return QueryMultiData<Topics>("Ts3pl_Topic_FindTopic", new { Search  = search});
+            return QueryMultiData<Post>("Ts3pl_Topic_FindTopic", new { Search = search });
         }
 
-        public IDataResult<Topics> GetTopTopics()
+        public IDataResult<Post> GetTopPost()
         {
-            return QueryMultiData<Topics>("Ts3pl_Topic_GetTopTopics");
+            return QueryMultiData<Post>("Ts3pl_Topic_GetTopTopics");
         }
         public IDmlResult<DMLResultType> BlockPost(int Id)
         {
@@ -54,6 +47,15 @@ namespace Ts3.pl.Repository.Forum.Implementation
             });
         }
 
+        public IDataResult<Topics> GetMainTopic()
+        {
+            return QueryMultiData<Topics>("Ts3pl_Topic_MainTopics");
+        }
+
+        public IDataResult<Post> GetPostListForTopic(int Id)
+        {
+            return QueryMultiData<Post>("Ts3pl_Post_GetPostListForTopic", new { Id = Id });
+        }
 
     }
 }
