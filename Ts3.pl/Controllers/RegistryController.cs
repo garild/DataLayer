@@ -58,7 +58,7 @@ namespace Ts3.pl.Controllers
             }
             return View("Index");
         }
-
+       
         public ActionResult LogOut()
         {
             Session.Clear();

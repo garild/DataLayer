@@ -23,6 +23,12 @@ namespace Ts3.pl
                url: "{controller}/{action}/{Id}",
                defaults: new { controller = "Forum", action = "Posts", Id = UrlParameter.Optional }
            );
+            routes.MapRoute(
+              name: "Registry",
+              url: "{controller}/{action}/{returnUrl}",
+              defaults: new { controller = "Registry", action = "Login", returnUrl = UrlParameter.Optional }
+          );
         }
     }
 }
+
