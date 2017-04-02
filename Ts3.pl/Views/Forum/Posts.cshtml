@@ -107,7 +107,8 @@
                                 </dl>
                             </li>
                         </ul>
-
+                        @if (Model.PostList?.Count > 0)
+                        {
                         <ul class="topiclist forums">
 
                             @foreach (var item in Model.PostList)
@@ -137,6 +138,13 @@
 
                             }
                         </ul>
+                        }
+                        else
+                        {
+                            <div class="stat-block online-list">
+                                <h3>Brak obecnie postów dla tej kategorii</h3>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
