@@ -11,15 +11,16 @@ namespace Ts3.pl.Controllers
     public class RegistryController : Controller
     {
         private static UsersRepository _userRepository = new UsersRepository();
-
+     
         public ActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Registry(Users user)
+        public ActionResult Registry(Users user,string returnUrl)
         {
+           
             if (ModelState.IsValid)
             {
                 var data = _userRepository.AddNewUser(user);
@@ -28,7 +29,8 @@ namespace Ts3.pl.Controllers
                     ModelState.Clear();
                     ViewBag.SuccessMsg = "Konto zostało utworzone!";
                     SessionPresister.UserName = user?.Name;
-                    return RedirectToAction("Index", "Home");
+                    SessionPresister.UserId = user.Id;
+                    return new RedirectResult(returnUrl);
                 }
                 else
                     ViewBag.ErrorMsg = "Wystąpił błąd podczas utworzenia konta. Podany login bądź email już istnieje!";
@@ -37,7 +39,7 @@ namespace Ts3.pl.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(ForumViewModel data)
+        public ActionResult Login(ForumViewModel data, string returnUrl)
         {
             if (!string.IsNullOrEmpty(data.Users?.DisplayName) && !string.IsNullOrEmpty(data.Users?.Password))
             {
@@ -49,7 +51,7 @@ namespace Ts3.pl.Controllers
                     new Ts3Principal(user);
                     SessionPresister.UserName = user.Name;
                     SessionPresister.UserId = user.Id;
-                    return RedirectToAction("Index", "Home");
+                    return new RedirectResult(returnUrl);
                 }
                 else
                     ViewBag.ErrorMsg = "Podany login lub hasło jest nieprawidłowe.";

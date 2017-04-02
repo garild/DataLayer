@@ -1,5 +1,8 @@
 ﻿@model Ts3.pl.Models.Users
+@{ 
+    var _url = HttpContext.Current.Request["ReturnUrl"];
 
+}
 
     <div class="panel-heading">
         <h3 class="panel-title">Rejestracja - utwórz konto! / Logowanie - zaloguj się </h3>
@@ -8,7 +11,7 @@
 
         <div class="row">
 
-            @using (Html.BeginForm("Registry", "Registry"))
+            @using (Html.BeginForm("Registry", "Registry",new { returnUrl = _url }))
             {
                 @Html.AntiForgeryToken()
 

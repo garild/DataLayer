@@ -8,30 +8,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Forum :: Home Page</title>
-
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.js"></script>
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/css/forum/styleSheets.css" rel="stylesheet" />
-    <link href="~/Content/css/forum/style.css" rel="stylesheet" />
-    <link href="~/Content/css/style.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/07b0ce5d10.js"></script>
-    <script src="~/Scripts/jquery-3.1.0.js"></script>
-    <script src="~/Scripts/bootstrap.js"></script>
+    @Styles.Render("~/Content/bootstrap")
+    @Scripts.Render("~/bundles/bootstrap")
+   
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
-
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="~/Content/css/navbar.css">
-    <link href="~/Content/css/forumStyle.css" rel="stylesheet" />
-    <link href="~/Content/css/customs.css" rel="stylesheet" />
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -56,13 +44,13 @@
                     </button>
                 </div>
                 <!-- logo -->
-                <a class="navbar-brand" href=""><img src="~/Content/images/logoTs.jpg" alt="Dispute Bills"></a>
+           
                 <div class="collapse navbar-collapse animated fadeIn" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav animated fadeIn text16 center-block">
-                        <li class="@Html.IsActive("Home","Index")"><a href="@Url.Action("Index", "Home")"><span class="glyphicon glyphicon-home"></span> Strona główna</a></li>
+                        <li class="@Html.IsActive("Home", "Index")"><a href="/Home"><span class="glyphicon glyphicon-home"></span> Strona główna</a></li>
                         <li class=""><a href="#"><span class="glyphicon glyphicon-th-large"></span> Dodaj Serwer DNS</a></li>
-                        <li class="@Html.IsActive("Forum","Index")"><a href="@Url.Action("Index", "Forum")"><span class="glyphicon glyphicon-th"></span> Forum</a></li>
-                        <li class="@Html.IsActive("Registry","Index")"><a href="@Url.Action("Index", "Registry")"><span class="glyphicon glyphicon-pencil"></span> Rejestracja</a></li>
+                        <li class="@Html.IsActive("Forum", "Index")"><a href="/Forum"><span class="glyphicon glyphicon-th"></span> Forum</a></li>
+                        <li class="@Html.IsActive("Registry", "Index")"><a href="/Registry?ReturnUrl=@Html.ReturnUrl()"><span class="glyphicon glyphicon-pencil"></span> Rejestracja</a></li>
                     </ul>
                     @if (!Html.ShowPartialView("Forum"))
                     {

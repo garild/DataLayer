@@ -22,7 +22,6 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -134,8 +133,8 @@
       <HintPath>..\packages\WebActivatorEx.2.0.4\lib\net40\WebActivatorEx.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -164,7 +163,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\css\forumStyle.css" />
     <Content Include="Content\css\forum\style.css" />
     <Content Include="Content\css\forum\styleSheets.css" />
     <Content Include="Content\css\navbar.css" />
@@ -218,8 +216,11 @@
     <Compile Include="Repository\Forum\Implementation\ForumRepository.cs" />
     <Compile Include="Repository\Forum\Interface\IForumRepository.cs" />
     <Compile Include="SharedModel\ForumViewModel.cs" />
+    <Compile Include="Utilities\Extensions.cs" />
     <Compile Include="Utilities\HttpUtilitis.cs" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -254,6 +255,7 @@
     <Content Include="Views\Forum\Index.cshtml" />
     <Content Include="Views\Shared\_ForumNavBar.cshtml" />
     <Content Include="Views\Forum\ViewPostList.cshtml" />
+    <Content Include="Views\Forum\Posts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -12,7 +12,6 @@ using Ts3.pl.SharedModel;
 
 namespace Ts3.pl.Controllers
 {
-    [RoutePrefix("/Forum")]
     public class ForumController : Controller
     {
         private static readonly ForumRepository _forumRepository = new ForumRepository();
@@ -21,7 +20,7 @@ namespace Ts3.pl.Controllers
         public ViewResult Index()
         {
             var data = _forumRepository.GetMainTopic();
-          
+
             var list = new ForumViewModel() { MainTopics = new List<Topics>(data.valueList) };
             return View(list);
         }
@@ -49,13 +48,13 @@ namespace Ts3.pl.Controllers
             });
         }
 
-       
+        [Ts3Authorize]
         [HttpPost]
-        public ActionResult AddNewTopic(string title, string bodyContent)
+        public ActionResult AddNewTopic(int Id, string title, string bodyContent)
         {
-            if (SessionPresister.UserId > 0)
+            if (SessionPresister.UserId > 0 && Id > 0)
             {
-                var dmlResult = _forumRepository.AddNewTopic(SessionPresister.UserId, title, bodyContent);
+                var dmlResult = _forumRepository.AddNewTopic(Id, SessionPresister.UserId, title, bodyContent);
                 if (dmlResult.Succeed)
                     return RedirectToAction("Index");
             }
@@ -78,25 +77,30 @@ namespace Ts3.pl.Controllers
             return RedirectToAction("Index");
         }
 
-        [Route("BlockPost/{Id}")]
+        [Route("forum/blockPost/{Id}")]
         public ActionResult BlockPost(int Id)
         {
             var result = _forumRepository.BlockPost(Id); // TODO dodać obłsugę błędu
             return RedirectToAction("Index");
         }
 
-        [Route("DeletePost/{Id}")]
+        [Route("forum/deletePost/{Id}")]
         public ActionResult DeletePost(int Id)
         {
             var result = _forumRepository.DeletePost(Id); // TODO dodać obłsugę błędu
             return RedirectToAction("Index");
         }
 
-        [Route("ViewPostList/{Id}")]
-        public ActionResult ViewPostList(int Id)
+        [Route("forum/posts/{Id}")]
+        public ActionResult Posts(int? Id)
         {
-            var result = _forumRepository.GetPostListForTopic(Id); // TODO dodać obłsugę błędu
-            var list = new ForumViewModel() { PostList = new List<Post>(result.valueList) };
+            var list = new ForumViewModel();
+            if (Id > 0)
+            {
+                var result = _forumRepository.GetPostListForTopic(Id); // TODO dodać obłsugę błędu
+                list = new ForumViewModel() { PostList = new List<Post>(result.valueList) };
+                return View(list);
+            }
             return View(list);
         }
     }

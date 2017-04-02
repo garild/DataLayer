@@ -12,10 +12,11 @@ namespace Ts3.pl.Repository.Forum.Implementation
         private readonly string BaseConnection = ConfigurationManager.ConnectionStrings["BaseConnection"].ConnectionString;
 
 
-        public IDmlResult<DMLResultType> AddNewTopic(int userId, string title, string bodyContent)
+        public IDmlResult<DMLResultType> AddNewTopic(int Id,int userId, string title, string bodyContent)
         {
-            return DMLData<DMLResultType>("Ts3pl_Topic_AddNewTopic", new
+            return DMLData<DMLResultType>("Ts3pl_Topic_AddNewPost", new
             {
+                Id = Id,
                 UserId = userId,
                 Title = title,
                 BodyContent = bodyContent
@@ -52,7 +53,7 @@ namespace Ts3.pl.Repository.Forum.Implementation
             return QueryMultiData<Topics>("Ts3pl_Topic_MainTopics");
         }
 
-        public IDataResult<Post> GetPostListForTopic(int Id)
+        public IDataResult<Post> GetPostListForTopic(int? Id)
         {
             return QueryMultiData<Post>("Ts3pl_Post_GetPostListForTopic", new { Id = Id });
         }

@@ -24,12 +24,25 @@ namespace Ts3.pl.Utilities
         public static bool ShowPartialView(this HtmlHelper html, string control)
         {
             var routeData = html.ViewContext.RouteData;
-           
+
             var routeControl = (string)routeData.Values["controller"];
 
             var returnActive = control == routeControl;
 
             return returnActive;
+        }
+
+        public static string ReturnUrl(this HtmlHelper html)
+        {
+            var partialUrl = HttpContext.Current.Request.RawUrl;
+            var returnUrl = partialUrl.Substring(partialUrl.IndexOf('/'));
+
+            if (!string.IsNullOrEmpty(returnUrl))
+            {
+                return $"{returnUrl}";
+            }
+            else
+                return "Home";
         }
     }
 }

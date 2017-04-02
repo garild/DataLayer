@@ -1,8 +1,10 @@
 ﻿@model  Ts3.pl.SharedModel.ForumViewModel
+@using Ts3.pl.Utilities
 @using DataLayer.WebCommon.Authorization;
 @{
     ViewBag.Title = "Forum";
     Layout = "~/Views/_SharedView.cshtml";
+    
 }
 
 <style>
@@ -10,7 +12,9 @@
         background-color: #000 !important;
     }
 </style>
+
 <div id="wrap-body">
+
 
     <div class="chunk">
 
@@ -27,7 +31,7 @@
                                     <div class="iconSpecial"><i class="glyphicon glyphicon-user"></i></div>
                                 </div>
 
-                                using (Html.BeginForm("Login", "Registry", FormMethod.Post))
+                                using (Html.BeginForm("Login", "Registry",new { returnUrl = Html.ReturnUrl() }, FormMethod.Post))
                                 {
                                     @Html.AntiForgeryToken()
                                     <div class="form-group">
@@ -85,7 +89,7 @@
                                         <dt title="No unread posts">
                                             <div class="list-inner">
                                                 @*<div class="glyphicon glyphicon-alert" style="padding-left:-20px"> </div>*@
-                                                <a href="@Url.Action("ViewPostList","Forum",new { Id = item.Id})" class="forumtitle">@Html.DisplayFor(modelItem => item.Name)</a>
+                                                <a href="@Html.DisplayFor(modelItem => item.NavigateUrl)" class="forumtitle">@Html.DisplayFor(modelItem => item.Name)</a>
                                                 <br>@Html.DisplayFor(modelItem => item.Description)
                                                 <div class="responsive-show" style="display: none;">
                                                     Topics: <strong>2</strong>
