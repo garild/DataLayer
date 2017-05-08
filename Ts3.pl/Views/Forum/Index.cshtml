@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = "Forum";
     Layout = "~/Views/_SharedView.cshtml";
-    
+    var returnUrl = Html.ReturnUrl();
 }
 
 <style>
@@ -51,7 +51,13 @@
                             }
                             else
                             {
-                                <h4><span class="glyphicon glyphicon-user"></span><b> <label class="text-info">&nbsp;&nbsp;@SessionPresister.UserName </label></b> </h4>
+                                <h3><span class="glyphicon glyphicon-user"></span><b> <label class="text-info">&nbsp;&nbsp;@SessionPresister.UserName </label></b> </h3>
+                                <form method="post" action="/Registry/LogOut">
+                                    @Html.Hidden("returnUrl", returnUrl)
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-block">Wyloguj się</button>
+                                    </div>
+                                </form>
                             }
 
                         </div>

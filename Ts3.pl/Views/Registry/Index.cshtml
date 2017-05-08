@@ -10,6 +10,20 @@
         color: #428bca !important;
         text-decoration: none;
     }
+    body { margin-top:30px; }
+hr.message-inner-separator !important
+{
+    clear: both !important;
+    margin-top: 10px !important ;
+    margin-bottom: 13px !important;
+    border: 0 !important;
+    height: 1px !important;
+    background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0)) !important;
+    background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0)) !important;
+    background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0)) !important;
+    background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0)) !important;
+}
+
 </style>
 <link href="~/Content/css/customs.css" rel="stylesheet" />
 <section class="content">
@@ -20,8 +34,14 @@
                 @if (!string.IsNullOrEmpty(Html.ViewBag.ErrorMsg))
                 {
                     <div class="alert alert-danger">
-                        <a href="#" class="close" data-dismiss="alert">&times;</a>
-                        <strong>Błąd!</strong> @ViewBag.ErrorMsg
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                            ×
+                        </button>
+                        <span class="glyphicon glyphicon-record"></span> <strong>Błąd logowania!</strong>
+                        <hr class="message-inner-separator">
+                        <p>
+                            Podany login bądź hasło nie są prawidłowe
+                        </p>
                     </div>
                 }
 

@@ -11,16 +11,16 @@ namespace Ts3.pl.Controllers
     public class RegistryController : Controller
     {
         private static UsersRepository _userRepository = new UsersRepository();
-     
+
         public ActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Registry(Users user,string returnUrl)
+        public ActionResult Registry(Users user, string returnUrl)
         {
-           
+
             if (ModelState.IsValid)
             {
                 var data = _userRepository.AddNewUser(user);
@@ -58,12 +58,16 @@ namespace Ts3.pl.Controllers
             }
             return View("Index");
         }
-       
-        public ActionResult LogOut()
+
+        public ActionResult LogOut(string returnUrl = null)
         {
             Session.Clear();
             FormsAuthentication.SignOut();
-            return View("Index");
+            if (string.IsNullOrEmpty(returnUrl))
+                return View("Index");
+            else
+                return new RedirectResult(returnUrl);
+
         }
     }
 }

@@ -50,13 +50,15 @@ namespace Ts3.pl.Controllers
 
         [Ts3Authorize]
         [HttpPost]
-        public ActionResult AddNewTopic(int Id, string title, string bodyContent)
+        [Route("Posts/AddNewPost")]
+        public ActionResult AddNewPost(int Id, string title, string bodyContent,string returnUrl)
         {
             if (SessionPresister.UserId > 0 && Id > 0)
             {
+                
                 var dmlResult = _forumRepository.AddNewTopic(Id, SessionPresister.UserId, title, bodyContent);
                 if (dmlResult.Succeed)
-                    return RedirectToAction("Index");
+                    return new RedirectResult(returnUrl);
             }
             return RedirectToAction("Index");
         }
@@ -77,21 +79,20 @@ namespace Ts3.pl.Controllers
             return RedirectToAction("Index");
         }
 
-        [Route("forum/blockPost/{Id}")]
+        [Route("blockPost/{Id}")]
         public ActionResult BlockPost(int Id)
         {
             var result = _forumRepository.BlockPost(Id); // TODO dodać obłsugę błędu
             return RedirectToAction("Index");
         }
 
-        [Route("forum/deletePost/{Id}")]
+        [Route("deletePost/{Id}")]
         public ActionResult DeletePost(int Id)
         {
             var result = _forumRepository.DeletePost(Id); // TODO dodać obłsugę błędu
             return RedirectToAction("Index");
         }
 
-        [Route("forum/posts/{Id}")]
         public ActionResult Posts(int? Id)
         {
             var list = new ForumViewModel();

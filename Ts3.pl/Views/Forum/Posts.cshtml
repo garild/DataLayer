@@ -6,6 +6,7 @@
     Layout = "~/Views/_SharedView.cshtml";
     int Id = 0;
     int.TryParse(HttpContext.Current.Request["Id"], out Id);
+    var returnUrl = Html.ReturnUrl();
 }
 
 <style>
@@ -44,117 +45,119 @@
 <div id="wrap-body">
 
     <div class="chunk">
+        @if (Model.PostList.Count > 0)
+            {
+            <div id="sidebar">
 
-        <div id="sidebar">
-
-            <div class="forabg inner">
-                <h4 class="side-block-head"><a href="#">Logowanie</a></h4>
-                <div class="side-block-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            @if (SessionPresister.UserId == default(int))
-                            {
-                                <div class="social-buttons">
-                                    <div class="iconSpecial"><i class="glyphicon glyphicon-user"></i></div>
-                                </div>
-
-                                using (Html.BeginForm("Login", "Registry", new { returnUrl = Html.ReturnUrl() }, FormMethod.Post))
+                <div class="forabg inner">
+                    <h4 class="side-block-head"><a href="#">Logowanie</a></h4>
+                    <div class="side-block-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if (SessionPresister.UserId == default(int))
                                 {
-                                    @Html.AntiForgeryToken()
-                                    <div class="form-group">
-                                        @Html.EditorFor(model => model.Users.DisplayName, new { htmlAttributes = new { @class = "form-control input-md", @placeholder = "Wpisz login..." } })
-                                        @Html.ValidationMessageFor(model => model.Users.DisplayName, "", new { @class = "text-danger" })
-                                    </div>
-                                    <div class="form-group">
-                                        @Html.PasswordFor(model => model.Users.Password, new { @class = "form-control input-md", @placeholder = "Wpisz hasło..." })
-                                        @Html.ValidationMessageFor(model => model.Users.Password, "", new { @class = "text-danger" })
-                                        <div class="help-block text-right"><a href="#"><b>Zapomniałeś hasło ?</b></a></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-block">Zaloguj</button>
+                                    <div class="social-buttons">
+                                        <div class="iconSpecial"><i class="glyphicon glyphicon-user"></i></div>
                                     </div>
 
+                                    <form method="post" action="/Registry/Login">
+                                        @Html.Hidden("returnUrl", returnUrl)
+                                        @Html.AntiForgeryToken()
+                                        <div class="form-group">
+                                            @Html.EditorFor(model => model.Users.DisplayName, new { htmlAttributes = new { @class = "form-control input-md", @placeholder = "Wpisz login..." } })
+                                            @Html.ValidationMessageFor(model => model.Users.DisplayName, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.PasswordFor(model => model.Users.Password, new { @class = "form-control input-md", @placeholder = "Wpisz hasło..." })
+                                            @Html.ValidationMessageFor(model => model.Users.Password, "", new { @class = "text-danger" })
+                                            <div class="help-block text-right"><a href="#"><b>Zapomniałeś hasło ?</b></a></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary btn-block">Zaloguj</button>
+                                        </div>
+
+                                    </form>
                                 }
-                            }
-                            else
-                            {
-                                <h4><span class="glyphicon glyphicon-user"></span><b> <label class="text-info">&nbsp;&nbsp;@SessionPresister.UserName </label></b> </h4>
-                            }
+                                else
+                                {
+                                    <h4><span class="glyphicon glyphicon-user"></span><b> <label class="text-info">&nbsp;&nbsp;@SessionPresister.UserName </label></b> </h4>
+                                    <form method="post" action="/Registry/LogOut">
+                                        @Html.Hidden("returnUrl", returnUrl)
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary btn-block">Wyloguj się</button>
+                                        </div>
+                                    </form>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="forumlist">
+                <div id="forumlist-inner">
+
+                    <div class="forabg">
+                        <div class="inner">
+                            <ul class="topiclist">
+                                <li class="header">
+                                    <dl class="icon">
+                                        <dt><div class="list-inner"><a href="javascript:void(0)">Temat - Autor</a></div></dt>
+                                        <dd class="topics">Komentarze</dd>
+                                        <dd class="posts">Wyświetlone</dd>
+                                        <dd class="posts" style="width:120px">Ostatni komentarz</dd>
+                                    </dl>
+                                </li>
+                            </ul>
+
+                            <ul class="topiclist forums">
+
+                                @foreach (var item in Model.PostList)
+                                {
+                                    <li class="row">
+                                        <dl class="icon forum_read">
+                                            <dt title="No unread posts">
+                                                <div class="list-inner">
+                                                    @*<div class="glyphicon glyphicon-alert" style="padding-left:-20px"> </div>*@
+                                                    <a href="@Url.Action("Post", "Forum", new { Id = item.Id })" class="forumtitle">@Html.DisplayFor(modelItem => item.Title)</a>
+                                                    <br>@Html.DisplayFor(modelItem => item.BodyContent)
+                                                    <div class="responsive-show" style="display: none;">
+                                                        Topics: <strong>2</strong>
+                                                    </div>
+                                                </div>
+                                            </dt>
+                                            <dd class="topics">2 </dd>
+                                            <dd class="posts">2 </dd>
+                                            <dd class="lastpost">
+                                                <a href="./viewtopic.php?style=2&amp;f=2&amp;p=2#p2" title="Welcome" class="lastsubject">Welcome</a> <br>
+                                                by <a href="./memberlist.php?style=2&amp;mode=viewprofile&amp;u=2" style="color: #AA0000;" class="username-coloured">Garibo</a>
+                                                24 Feb 2015, 21:50
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                }
+                            </ul>
 
                         </div>
                     </div>
                 </div>
-
             </div>
+        }
+        else
+        {
+            <div class="stat-block online-list">
+                <center>
+                    <img src="https://www.teamspeak.com/assets/images/logos/teamspeak.png" width="650" height="300" />
+                </center>
+                <p>
+                    Witaj! Brak obecnie postów dla tej kategorii
 
-
-
-        </div>
-
-        <div id="forumlist">
-
-            <div id="forumlist-inner">
-
-                <div class="forabg">
-                    <div class="inner">
-                        <ul class="topiclist">
-                            <li class="header">
-                                <dl class="icon">
-                                    <dt><div class="list-inner"><a href="javascript:void(0)">Temat - Autor</a></div></dt>
-                                    <dd class="topics">Komentarze</dd>
-                                    <dd class="posts">Wyświetlone</dd>
-                                    <dd class="posts" style="width:120px">Ostatni komentarz</dd>
-                                </dl>
-                            </li>
-                        </ul>
-                        @if (Model.PostList?.Count > 0)
-                        {
-                        <ul class="topiclist forums">
-
-                            @foreach (var item in Model.PostList)
-                            {
-                                <li class="row">
-                                    <dl class="icon forum_read">
-                                        <dt title="No unread posts">
-                                            <div class="list-inner">
-                                                @*<div class="glyphicon glyphicon-alert" style="padding-left:-20px"> </div>*@
-                                                <a href="@Url.Action("Post", "Forum", new { Id = item.Id })" class="forumtitle">@Html.DisplayFor(modelItem => item.Title)</a>
-                                                <br>@Html.DisplayFor(modelItem => item.BodyContent)
-                                                <div class="responsive-show" style="display: none;">
-                                                    Topics: <strong>2</strong>
-                                                </div>
-                                            </div>
-                                        </dt>
-                                        <dd class="topics">2 </dd>
-                                        <dd class="posts">2 </dd>
-                                        <dd class="lastpost">
-                                            <a href="./viewtopic.php?style=2&amp;f=2&amp;p=2#p2" title="Welcome" class="lastsubject">Welcome</a> <br>
-                                            by <a href="./memberlist.php?style=2&amp;mode=viewprofile&amp;u=2" style="color: #AA0000;" class="username-coloured">Garibo</a>
-                                            24 Feb 2015, 21:50
-                                        </dd>
-                                    </dl>
-                                </li>
-
-
-                            }
-                        </ul>
-                        }
-                        else
-                        {
-                            <div class="stat-block online-list">
-                                <h3>Brak obecnie postów dla tej kategorii</h3>
-                            </div>
-                        }
-                    </div>
-                </div>
+                </p>
             </div>
-
-
-
-
-
-        </div>
-
+        }
 
     </div>
 </div>
@@ -162,7 +165,11 @@
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        @using (Html.BeginForm("AddNewTopic", "Forum", new { Id = Id }, FormMethod.Post))
+        @using (Html.BeginForm("AddNewPost", "Forum", new
+        {
+            Id = Id,
+            returnUrl = returnUrl
+        }, FormMethod.Post))
         {
             <div class="modal-content">
                 <div class="modal-header">
@@ -210,4 +217,3 @@
         }
     </div>
 </div>
-
