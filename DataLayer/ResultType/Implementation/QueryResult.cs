@@ -1,4 +1,5 @@
 ﻿using DataLayer.ResultType.Interface;
+using System;
 using System.Collections.Generic;
 
 namespace DataLayer.ResultType.Repository
@@ -48,7 +49,8 @@ namespace DataLayer.ResultType.Repository
             }
             set
             {
-                if (value == null)
+               
+                if (value == null ||  value.Equals(Activator.CreateInstance<T>()))
                 {
                     _success = false;
                     _value = default(T);
@@ -58,5 +60,8 @@ namespace DataLayer.ResultType.Repository
                 _value = value;
             }
         }
+
     }
+
 }
+
